@@ -13,4 +13,19 @@ public class UserService {
     public User save(User user) {
         return userRepository.save(user);
     }
+
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
+
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
+    public User get(Long id) {
+        if (userRepository.findById(id).isEmpty()) {
+            throw new RuntimeException("User not with id " + id + " not exists");
+        }
+        return userRepository.findById(id).get();
+    }
 }
